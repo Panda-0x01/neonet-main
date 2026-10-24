@@ -1,116 +1,104 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { HeroScan } from "@/components/hero-scan";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.08, ease: "easeOut" as const },
-  }),
-};
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pb-20 pt-32 sm:pt-40 lg:pt-48">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[700px] bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.18),transparent)]"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
-        aria-hidden="true"
-      />
+    <section className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-32">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:64px_64px]" />
+      </div>
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+        <div className="mx-auto max-w-4xl text-center">
           <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mb-8 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-xs text-cyan-300"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-zinc-300"
           >
             <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-300 opacity-75"></span>
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-300"></span>
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white"></span>
             </span>
-            <span>Zero dependencies • Pure Python</span>
+            Open source CLI toolkit
           </motion.div>
 
           <motion.h1
-            custom={1}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="text-balance text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-balance text-4xl font-medium tracking-tight sm:text-6xl lg:text-7xl"
           >
-            Network Recon
+            Network reconnaissance
             <br />
-            <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">
-              Built for Speed
+            <span className="bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+              built for speed
             </span>
           </motion.h1>
 
           <motion.p
-            custom={2}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted-foreground sm:text-xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-6 text-balance text-lg text-zinc-400 sm:text-xl"
           >
-            One CLI to scan, enumerate, and inspect your network. From Nmap and
-            DNS to SSL and subdomains — get actionable results in seconds.
+            A fast, minimal CLI for scanning, enumerating, and inspecting your network.
+            Nmap, DNS, SSL, subdomains — all in one tool.
           </motion.p>
 
           <motion.div
-            custom={3}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-10 flex flex-col items-center gap-2 sm:flex-row"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <Button size="lg" className="rounded-full px-6 shadow-[0_0_0_1px_rgba(34,211,238,0.4),0_0_60px_-20px_rgba(34,211,238,0.6)]" asChild>
-              <a href="#cli">
-                Install now
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+            <Button size="lg" asChild>
+              <Link href="#cli">
+                Get started
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-6" asChild>
-              <a href="https://github.com/Panda-0x01/neoNet" target="_blank" rel="noopener noreferrer">
-                View source
-              </a>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="https://github.com/Panda-0x01/neoNet" target="_blank" rel="noopener noreferrer">
+                View on GitHub
+              </Link>
             </Button>
           </motion.div>
-        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mx-auto mt-20 max-w-6xl"
-        >
-          <div
-            className="pointer-events-none absolute -inset-x-60 -top-60 -z-10 h-[700px] bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.16),transparent_70%)] blur-3xl"
-            aria-hidden="true"
-          />
-          <div className="relative overflow-hidden rounded-xl border border-cyan-400/20 bg-card/80 shadow-[0_80px_160px_-120px_rgba(34,211,238,0.9)] backdrop-blur">
-            <div className="flex items-center justify-between border-b border-cyan-400/20 px-4 py-2">
-              <div className="flex items-center gap-1.5">
-                <div className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
-                <div className="h-2.5 w-2.5 rounded-full bg-amber-300/80" />
-                <div className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="relative mx-auto mt-16 max-w-5xl"
+          >
+            <div className="absolute -inset-x-20 -top-20 -z-10 h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08),transparent_70%)] blur-3xl" />
+            <div className="overflow-hidden rounded-lg border border-white/10 bg-black shadow-glow">
+              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+                <div className="flex gap-1.5">
+                  <div className="h-3 w-3 rounded-full bg-white/10" />
+                  <div className="h-3 w-3 rounded-full bg-white/10" />
+                  <div className="h-3 w-3 rounded-full bg-white/10" />
+                </div>
+                <div className="ml-4 flex items-center gap-2 text-sm text-zinc-500">
+                  <Terminal className="h-3.5 w-3.5" />
+                  <span>terminal</span>
+                </div>
               </div>
-              <div className="text-xs text-cyan-200/70">neonet@cli</div>
-              <div className="w-14" />
+              <div className="p-6 font-mono text-sm">
+                <div className="text-zinc-500">$ neonet scan 192.168.1.0/24</div>
+                <div className="mt-2 text-zinc-300">[+] Scanning network...</div>
+                <div className="mt-1 text-white">[✓] Found 12 hosts</div>
+                <div className="mt-1 text-zinc-400">[✓] Open ports discovered</div>
+                <div className="mt-2 text-zinc-500">$ <span className="animate-pulse">_</span></div>
+              </div>
             </div>
-            <HeroScan />
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

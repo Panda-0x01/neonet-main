@@ -1,42 +1,33 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { CodeLine } from "@/components/code-line";
+import { ArrowRight } from "lucide-react";
 
 export function CtaBand() {
   return (
-    <section className="relative border-t border-border py-24 sm:py-32">
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-green/50 to-transparent"
-        aria-hidden="true"
-      />
-      <div className="container relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="mx-auto flex max-w-3xl flex-col items-center rounded-xl border border-border bg-card px-6 py-12 text-center shadow-sm sm:px-12 sm:py-16"
-        >
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+    <section className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/5 to-transparent px-6 py-16 text-center sm:px-16">
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05),transparent_70%)]" />
+          <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
             Ready to start scanning?
           </h2>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Install neoNet, point it at infrastructure you&apos;re authorized to test,
-            and get results in your terminal in seconds.
+          <p className="mx-auto mt-4 max-w-xl text-lg text-zinc-400">
+            Install neoNet and get started with network reconnaissance in seconds.
           </p>
-          <div className="mt-8 w-full max-w-lg">
-            <div className="overflow-hidden rounded-lg border border-border bg-muted/50">
-              <CodeLine command="curl -fsSL https://raw.githubusercontent.com/Panda-0x01/neoNet/main/install.sh | bash" />
-            </div>
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button size="lg" asChild>
+              <Link href="#cli">
+                Get started
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <Link href="https://github.com/Panda-0x01/neoNet" target="_blank" rel="noopener noreferrer">
+                Star on GitHub
+              </Link>
+            </Button>
           </div>
-          <Button size="lg" className="mt-6" asChild>
-            <a href="#cli">
-              Get Started
-            </a>
-          </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,92 +1,28 @@
-import Image from "next/image";
-import { Twitter, MessageSquare } from "lucide-react";
-
-const FOOTER_LINKS = {
-  Product: [
-    { label: "Modules", href: "#features" },
-    { label: "CLI", href: "#cli" },
-    { label: "Pricing", href: "#pricing" },
-  ],
-  Resources: [
-    { label: "Documentation", href: "https://github.com/Panda-0x01/neoNet#readme" },
-    { label: "GitHub", href: "https://github.com/Panda-0x01/neoNet" },
-    { label: "License (MIT)", href: "https://github.com/Panda-0x01/neoNet/blob/main/LICENSE" },
-  ],
-  Company: [
-    { label: "FAQ", href: "#faq" },
-    { label: "Contact", href: "mailto:hello@neonet.dev" },
-  ],
-};
-
-const SOCIALS = [
-  { label: "Twitter", href: "https://twitter.com", icon: Twitter },
-  { label: "Community chat", href: "https://github.com/Panda-0x01/neoNet/discussions", icon: MessageSquare },
-];
+import Link from "next/link";
+import { Github } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-16">
-      <div className="container">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:grid-cols-5">
-          <div className="col-span-2 lg:col-span-2">
-            <a href="#top" className="flex items-center gap-2 text-[15px] font-semibold">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-card shadow-sm overflow-hidden">
-                <Image src="/neonet.png" alt="neoNet logo" width={28} height={28} className="object-contain" />
-              </span>
-              <span>neo</span>
-              <span className="text-accent-green">Net</span>
-            </a>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A cross-platform CLI toolkit for network reconnaissance and
-              security analysis. Built for speed, simplicity, and reliability.
-            </p>
-            <div className="mt-5 flex items-center gap-2">
-              {SOCIALS.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${s.label} (opens in a new tab)`}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-card text-muted-foreground shadow-sm transition-colors hover:text-foreground hover:bg-muted"
-                >
-                  <s.icon className="h-4 w-4" aria-hidden="true" />
-                </a>
-              ))}
+    <footer className="border-t border-white/5 py-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+          <div className="flex items-center gap-2">
+            <div className="flex h-6 w-6 items-center justify-center rounded-md bg-white">
+              <span className="text-xs font-bold text-black">N</span>
             </div>
+            <span className="text-sm">neoNet</span>
           </div>
-
-          {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
-            <div key={heading}>
-              <h3 className="text-sm font-semibold">
-                {heading}
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      target={link.href.startsWith("http") ? "_blank" : undefined}
-                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} neoNet. Released under the MIT
-            License.
+          <p className="text-sm text-zinc-500">
+            © {new Date().getFullYear()} neoNet. Open source project.
           </p>
-          <p className="text-center text-sm text-muted-foreground sm:text-right">
-            For authorized security testing only.
-          </p>
+          <Link
+            href="https://github.com/Panda-0x01/neoNet"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-zinc-400 transition-colors hover:text-white"
+          >
+            <Github className="h-5 w-5" />
+          </Link>
         </div>
       </div>
     </footer>

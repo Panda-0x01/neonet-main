@@ -1,87 +1,63 @@
-"use client";
+import { Shield, Zap, Code, Terminal, Search, Lock } from "lucide-react";
 
-import { motion } from "framer-motion";
-import {
-  Radar,
-  Globe,
-  FileSearch,
-  ShieldAlert,
-  ListTree,
-  Waves,
-  Route,
-  Radio,
-  LockKeyhole,
-  Cpu,
-  type LucideIcon,
-} from "lucide-react";
-import { MODULES } from "@/lib/site-data";
-
-const ICONS: Record<string, LucideIcon> = {
-  nmap: Radar,
-  dns: Globe,
-  whois: FileSearch,
-  http: ShieldAlert,
-  subs: ListTree,
-  sweep: Waves,
-  trace: Route,
-  banners: Radio,
-  ssl: LockKeyhole,
-  sysinfo: Cpu,
-};
-
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.06 },
+const features = [
+  {
+    name: "Lightning fast",
+    description: "Built for speed with optimized scanning algorithms and parallel execution.",
+    icon: Zap,
   },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 18 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
+  {
+    name: "Zero dependencies",
+    description: "Pure Python with no external dependencies. Just install and run.",
+    icon: Code,
+  },
+  {
+    name: "Comprehensive scanning",
+    description: "Port scanning, service detection, OS fingerprinting, and vulnerability checks.",
+    icon: Search,
+  },
+  {
+    name: "DNS & SSL inspection",
+    description: "Deep DNS enumeration, subdomain discovery, and SSL certificate analysis.",
+    icon: Shield,
+  },
+  {
+    name: "CLI-first design",
+    description: "Clean, intuitive commands designed for security professionals and developers.",
+    icon: Terminal,
+  },
+  {
+    name: "Cross-platform",
+    description: "Works seamlessly on Linux, macOS, and Windows with consistent behavior.",
+    icon: Lock,
+  },
+];
 
 export function Features() {
   return (
-    <section id="features" className="relative py-24 sm:py-32">
+    <section id="features" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium text-cyan-300">Modules</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
-            Built for every phase of recon
+          <h2 className="text-3xl font-medium tracking-tight sm:text-4xl">
+            Everything you need for recon
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Ten focused modules, one consistent CLI. Chain them together or run
-            them individually for maximum flexibility.
+          <p className="mt-4 text-lg text-zinc-400">
+            Powerful network reconnaissance tools in a single, elegant CLI.
           </p>
         </div>
-
-        <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {MODULES.map((mod) => {
-            const Icon = ICONS[mod.id] ?? Radar;
-            return (
-              <div
-                key={mod.id}
-                className="group relative overflow-hidden rounded-xl border border-border/80 bg-card/60 p-6 transition-all hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_40px_80px_-60px_rgba(34,211,238,0.9)]"
-              >
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent" />
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-400/10 ring-1 ring-cyan-400/40">
-                  <Icon className="h-4 w-4 text-cyan-300" aria-hidden="true" />
-                </div>
-                <h3 className="mt-4 text-base font-medium">
-                  {mod.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {mod.description}
-                </p>
-                <div className="mt-4 overflow-x-auto rounded-lg border border-border/70 bg-background/60 px-3 py-2">
-                  <code className="font-mono text-xs text-cyan-200/80">
-                    {mod.command}
-                  </code>
-                </div>
+        <div className="mx-auto mt-16 grid max-w-5xl grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((feature) => (
+            <div
+              key={feature.name}
+              className="group relative overflow-hidden rounded-lg border border-white/10 bg-gradient-to-b from-white/5 to-transparent p-6 transition-colors hover:border-white/20"
+            >
+              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5">
+                <feature.icon className="h-5 w-5" />
               </div>
-            );
-          })}
+              <h3 className="text-base font-medium">{feature.name}</h3>
+              <p className="mt-2 text-sm text-zinc-400">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
