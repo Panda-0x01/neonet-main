@@ -2,58 +2,42 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Github, Menu } from "lucide-react";
-
-const navigation = [
-  { name: "Features", href: "#features" },
-  { name: "CLI", href: "#cli" },
-  { name: "Documentation", href: "https://github.com/Panda-0x01/neoNet#readme" },
-];
+import { Github } from "lucide-react";
 
 export function Navbar() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">neoNet</span>
-            <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-white">
-                <span className="text-sm font-semibold text-black">N</span>
-              </div>
-              <span className="text-sm font-medium">neoNet</span>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 max-w-screen-2xl items-center">
+        <div className="mr-4 flex">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <div className="flex h-6 w-6 items-center justify-center rounded bg-black">
+              <span className="text-xs font-semibold text-white">N</span>
             </div>
+            <span className="font-semibold">neoNet</span>
           </Link>
-        </div>
-        <div className="flex lg:hidden">
-          <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-zinc-400">
-            <span className="sr-only">Open main menu</span>
-            <Menu className="h-6 w-6" aria-hidden="true" />
-          </button>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm leading-6 text-zinc-400 transition-colors hover:text-white"
-            >
-              {item.name}
+          <nav className="flex items-center gap-6 text-sm">
+            <Link href="#features" className="transition-colors hover:text-foreground/80 text-foreground/60">
+              Features
             </Link>
-          ))}
+            <Link href="#cli" className="transition-colors hover:text-foreground/80 text-foreground/60">
+              CLI
+            </Link>
+            <Link href="https://github.com/Panda-0x01/neoNet#readme" className="transition-colors hover:text-foreground/80 text-foreground/60">
+              Docs
+            </Link>
+          </nav>
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+        <div className="flex flex-1 items-center justify-end space-x-2">
           <Button variant="ghost" size="sm" asChild>
             <Link href="https://github.com/Panda-0x01/neoNet" target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-4 w-4" />
-              GitHub
+              <Github className="h-4 w-4" />
             </Link>
           </Button>
           <Button size="sm" asChild>
-            <Link href="#cli">Download</Link>
+            <Link href="#cli">Get Started</Link>
           </Button>
         </div>
-      </nav>
+      </div>
     </header>
   );
 }

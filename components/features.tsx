@@ -1,68 +1,64 @@
-import { Terminal, Search, Shield, Zap, Globe, Code } from "lucide-react";
+import { Terminal, Search, Shield, Zap, Globe, Layers } from "lucide-react";
 
 const features = [
   {
-    name: "Lightning Fast Scanning",
-    description: "Optimized multi-threaded scanning engine delivers results in seconds, not minutes.",
     icon: Zap,
+    title: "Lightning Fast",
+    description: "Optimized scanning algorithms for quick results without compromising accuracy.",
   },
   {
-    name: "Zero Dependencies",
-    description: "Pure Python implementation with no external dependencies. Install once, run anywhere.",
-    icon: Code,
+    icon: Layers,
+    title: "Zero Dependencies",
+    description: "Pure Python implementation. No external dependencies required.",
   },
   {
-    name: "Port & Service Detection",
-    description: "Comprehensive port scanning with intelligent service detection and version fingerprinting.",
     icon: Search,
+    title: "Port Scanning",
+    description: "Comprehensive port scanning with service detection and banner grabbing.",
   },
   {
-    name: "DNS & Subdomain Enumeration",
-    description: "Discover subdomains, DNS records, and map your attack surface with ease.",
     icon: Globe,
+    title: "DNS & Subdomains",
+    description: "DNS enumeration and subdomain discovery made effortless.",
   },
   {
-    name: "SSL/TLS Inspection",
-    description: "Analyze certificates, cipher suites, and security configurations in detail.",
     icon: Shield,
+    title: "SSL Inspection",
+    description: "Deep SSL/TLS certificate analysis and security assessment.",
   },
   {
-    name: "Intuitive CLI",
-    description: "Clean, colorized output with simple commands designed for productivity.",
     icon: Terminal,
+    title: "Clean CLI",
+    description: "Intuitive commands with clear, readable output for better productivity.",
   },
 ];
 
 export function Features() {
   return (
-    <section id="features" className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold leading-7 text-white">Everything you need</h2>
-          <p className="mt-2 text-3xl font-medium tracking-tight text-gradient sm:text-4xl">
-            Powerful recon tools, minimal interface
-          </p>
-          <p className="mt-6 text-lg leading-8 text-zinc-400">
-            All the network reconnaissance capabilities you need in one fast, reliable CLI tool.
-          </p>
-        </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.name} className="flex flex-col">
-                <dt className="flex items-center gap-x-3 text-base font-semibold leading-7 text-white">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 ring-1 ring-inset ring-white/10">
-                    <feature.icon className="h-5 w-5 text-white" aria-hidden="true" />
-                  </div>
-                  {feature.name}
-                </dt>
-                <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-zinc-400">
-                  <p className="flex-auto">{feature.description}</p>
-                </dd>
+    <section id="features" className="container py-8 md:py-12 lg:py-24">
+      <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
+        <h2 className="font-bold text-3xl leading-[1.1] sm:text-3xl md:text-5xl">
+          Features
+        </h2>
+        <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+          Everything you need for network reconnaissance in one powerful CLI tool
+        </p>
+      </div>
+      <div className="mx-auto grid justify-center gap-4 sm:grid-cols-2 md:max-w-[64rem] md:grid-cols-3 mt-12">
+        {features.map((feature, index) => (
+          <div
+            key={index}
+            className="relative overflow-hidden rounded-lg border bg-background p-2"
+          >
+            <div className="flex h-[180px] flex-col justify-between rounded-md p-6">
+              <feature.icon className="h-12 w-12" strokeWidth={1.5} />
+              <div className="space-y-2">
+                <h3 className="font-bold">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground">{feature.description}</p>
               </div>
-            ))}
-          </dl>
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
